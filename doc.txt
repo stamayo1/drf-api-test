@@ -1,0 +1,15 @@
+--TODAS LAS EMPRESAS
+SELECT *
+From drf_enterprise;
+--TODOS LOS CODIGOS ASOCIADOS DE UNA EMPRESA
+SELECT code.* 
+FROM drf_code as code 
+WHERE code.owner_id = 1;
+-- RECUPERAR UNA EMPRESA CON UN NIT ESPECIFICO Y TODOS SUS CODIGOS ASOCIADOS
+Select enter.name, code.id as code, code.name as nameCode, code.description
+FROM drf_enterprise as enter, drf_code as code 
+WHERE code.owner_id = enter.id and enter.nit = 2711;
+-- RECUPERAR UNA EMPRESA DUEÑA DE UN CODIGO, USANDO EL ID DEL CODIGO 
+Select enter.name, enter.nit, enter.gln 
+FROM drf_enterprise as enter, drf_code as code 
+WHERE enter.id = code.owner_id and code.id = 4;
